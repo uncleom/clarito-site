@@ -71,13 +71,14 @@ nav {
 .hero-content { min-width: 0; }
 .hero-visual {
   flex-shrink: 0;
-  width: 280px;
+  width: 200px;
 }
 .hero-visual img {
   width: 100%;
-  border-radius: 12px;
+  height: auto;
+  border-radius: 16px;
   display: block;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+  opacity: 0.93;
 }
 
 .hero-badge {
@@ -309,8 +310,8 @@ footer a:hover { color: var(--dark-muted); }
 @media (max-width: 600px) {
   nav, .hero, .contact-section, footer { padding-left: 24px; padding-right: 24px; }
   .main { padding: 0 24px; }
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero-visual { width: 130px; margin: 0 auto; }
   .hero h1 { font-size: 2.25rem; }
   .features { grid-template-columns: 1fr; }
   .who-cards { grid-template-columns: 1fr; }
