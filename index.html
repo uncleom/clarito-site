@@ -61,7 +61,24 @@ nav {
 
 /* ── HERO ── */
 .hero { background: var(--dark); padding: 80px 48px 88px; }
-.hero-inner { max-width: 760px; margin: 0 auto; }
+.hero-inner {
+  max-width: 960px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+}
+.hero-content { min-width: 0; }
+.hero-visual {
+  flex-shrink: 0;
+  width: 280px;
+}
+.hero-visual img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+}
 
 .hero-badge {
   display: inline-flex;
@@ -261,9 +278,39 @@ footer span { font-size: 12.5px; color: var(--dark-subtle); letter-spacing: 0.02
 footer a { color: var(--dark-subtle); text-decoration: none; }
 footer a:hover { color: var(--dark-muted); }
 
+/* ── LINKEDIN BADGE ── */
+.li-badge {
+  display: inline-flex; flex-direction: column;
+  width: 280px; border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08); font-family: var(--font);
+  margin-top: 4px;
+}
+.li-badge-header {
+  background: #0A66C2; padding: 8px 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.li-badge-body {
+  background: #1B1F23; padding: 14px 14px 12px;
+  display: flex; flex-direction: column;
+}
+.li-badge-profile { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.li-badge-photo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.15); }
+.li-badge-name { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 3px; }
+.li-badge-headline { font-size: 11.5px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+.li-badge-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.5); border-radius: 100px;
+  color: #fff; font-size: 13px; font-weight: 600;
+  padding: 6px 16px; text-decoration: none;
+  align-self: flex-start; transition: background 0.15s;
+}
+.li-badge-btn:hover { background: rgba(255,255,255,0.08); }
+
 @media (max-width: 600px) {
   nav, .hero, .contact-section, footer { padding-left: 24px; padding-right: 24px; }
   .main { padding: 0 24px; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
   .hero h1 { font-size: 2.25rem; }
   .features { grid-template-columns: 1fr; }
   .who-cards { grid-template-columns: 1fr; }
@@ -277,7 +324,7 @@ footer a:hover { color: var(--dark-muted); }
   <a class="nav-logo" href="https://nodored.com.ar">
     <img src="logo.jpg" alt="NodoRed">
     <div class="nav-logo-sep"></div>
-    <span class="nav-product">Clarito</span>
+    <span class="nav-product">NodoRed</span>
   </a>
   <a class="nav-link" href="#contact">Escribime</a>
 </nav>
@@ -285,18 +332,23 @@ footer a:hover { color: var(--dark-muted); }
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-badge">En producción · Para estudios contables y PyMEs</div>
-    <h1>Cargá comprobantes<br>automáticamente.<br><em>Sin Clave Fiscal.</em></h1>
-    <p class="hero-tagline">Tirás el PDF o la foto. Clarito extrae los datos y te los devuelve en Excel. Facturas A/B/C/E, fotos de WhatsApp, tickets de nafta, hasta manuscritos.</p>
-    <div class="cta-row">
-      <a class="btn-primary" href="https://wa.me/5492233391532">Hablar por WhatsApp</a>
-      <a class="btn-ghost" href="mailto:contact@nodored.com.ar">Escribir por mail</a>
+    <div class="hero-content">
+      <div class="hero-badge">En producción · Para estudios contables y PyMEs</div>
+      <h1>Cargá comprobantes<br>automáticamente.<br><em>Sin Clave Fiscal.</em></h1>
+      <p class="hero-tagline">Tirás el PDF o la foto. Clarito extrae los datos y te los devuelve en Excel. Facturas A/B/C/E, fotos de WhatsApp, tickets de nafta, hasta manuscritos.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://wa.me/5492233391532">Hablar por WhatsApp</a>
+        <a class="btn-ghost" href="mailto:contact@nodored.com.ar">Escribir por mail</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-pill">Sin Clave Fiscal</span>
+        <span class="trust-pill">Facturas A / B / C / E</span>
+        <span class="trust-pill">Resultado en Excel</span>
+        <span class="trust-pill">Hecho en Argentina</span>
+      </div>
     </div>
-    <div class="hero-trust">
-      <span class="trust-pill">Sin Clave Fiscal</span>
-      <span class="trust-pill">Facturas A / B / C / E</span>
-      <span class="trust-pill">Resultado en Excel</span>
-      <span class="trust-pill">Hecho en Argentina</span>
+    <div class="hero-visual">
+      <img src="clarito-banner.jpg" alt="Clarito">
     </div>
   </div>
 </section>
@@ -419,9 +471,24 @@ footer a:hover { color: var(--dark-muted); }
       <a class="btn-ghost" href="mailto:contact@nodored.com.ar">Mandar un mail</a>
     </div>
     <p class="contact-note">
-      Soy Oleg — quien hace y mantiene Clarito. Lo que me mandás lo proceso yo directamente, sin compartirlo con nadie.<br>
-      También en <a href="https://linkedin.com/in/oleg-minkin">LinkedIn</a>
+      Soy Oleg — quien hace y mantiene Clarito. Lo que me mandás lo proceso yo directamente, sin compartirlo con nadie.
     </p>
+    <div class="li-badge" style="margin-top: 24px;">
+      <div class="li-badge-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span style="font-size:12px;font-weight:600;color:#fff;letter-spacing:0.01em;">LinkedIn</span>
+      </div>
+      <div class="li-badge-body">
+        <div class="li-badge-profile">
+          <img class="li-badge-photo" src="photo.jpg" alt="Oleg Minkin">
+          <div class="li-badge-info">
+            <div class="li-badge-name">Oleg Minkin</div>
+            <div class="li-badge-headline">Desarrollador de software · Fundador de NodoRed · Automatización contable para estudios y PyMEs</div>
+          </div>
+        </div>
+        <a class="li-badge-btn" href="https://ar.linkedin.com/in/oleg-minkin" target="_blank" rel="noopener">Ver perfil</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -432,5 +499,6 @@ footer a:hover { color: var(--dark-muted); }
   </div>
 </footer>
 
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 </body>
 </html>
